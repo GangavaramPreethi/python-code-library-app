@@ -56,6 +56,6 @@ services:
       - borrow_service
 
 networks:
+  networks:
   mynetwork:
-    driver: overlay
-    attachable: true
+    external: true
