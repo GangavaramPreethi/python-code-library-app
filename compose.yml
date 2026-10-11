@@ -1,4 +1,4 @@
----
+
 services:
   db:
     image: gangavarampreethi/flm-python:db
@@ -19,7 +19,6 @@ services:
       - mynetwork
     depends_on:
       - db
-    
 
   book_service:
     image: gangavarampreethi/flm-python:book
@@ -31,6 +30,7 @@ services:
       - mynetwork
     depends_on:
       - db
+
   borrow_service:
     image: gangavarampreethi/flm-python:borrow
     deploy:
@@ -58,3 +58,4 @@ services:
 networks:
   mynetwork:
     driver: overlay
+    attachable: true
