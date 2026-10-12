@@ -7,7 +7,7 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - mynetwork
+      - myapp
 
   auth_service:
     image: gangavarampreethi/flm-python:auth
@@ -16,7 +16,7 @@ services:
     ports:
       - "5001:5001"
     networks:
-      - mynetwork
+      - myapp
     depends_on:
       - db
 
@@ -27,7 +27,7 @@ services:
     ports:
       - "5002:5002"
     networks:
-      - mynetwork
+      - myapp
     depends_on:
       - db
 
@@ -38,7 +38,7 @@ services:
     ports:
       - "5003:5003"
     networks:
-      - mynetwork
+      - myapp
     depends_on:
       - db
 
@@ -49,13 +49,15 @@ services:
     ports:
       - "5000:5000"
     networks:
-      - mynetwork
+      - myapp
     depends_on:
       - auth_service
       - book_service
       - borrow_service
 
 networks:
-  networks:
-  mynetwork:
-    external: true
+  myapp:
+     driver:bridge
+   
+volumes:
+  mydata:
